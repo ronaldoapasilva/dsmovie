@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.devsuperior.dsmovie.dto.MovieDTO;
 import com.devsuperior.dsmovie.entities.Movie;
@@ -22,15 +24,26 @@ public class MovieService {
 	public Page<MovieDTO> findAll(Pageable pageable){
 		Page<Movie> result = repository.findAll(pageable);
 		Page<MovieDTO> page = result.map( x -> new MovieDTO(x));
-		return page;		
+		return page;
 	}
 	
 	@Transactional(readOnly = true)
 	public MovieDTO findById(Long id){
-		//findById retorna o objeto Optinal que é um objeto especial do java
-		//para acessar o id então usa o get depois do findById
-		Movie result = repository.findById(id).get();
-		MovieDTO dto = new MovieDTO(result);		
-		return dto;		
+		Movie result = repository.findById(id).get();		
+		MovieDTO dto = new MovieDTO();
+		
+		return dto;
 	}
+
+	/*
+	@GetMapping
+	public Page<MovieDTO> findAll(Pageable pageable){		
+		return repository.findAll(pageable);
+	}
+	
+	@GetMapping(value = "/{id}")
+	public MovieDTO findById(@PathVariable Long id){
+		return repository.findById(id);
+	}
+	*/
 }
