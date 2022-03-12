@@ -10,7 +10,7 @@ public class Score {
 
 	//chave composta
 	@EmbeddedId
-	private ScorePK id = new ScorePK();
+	private ScorePK2 id = new ScorePK2();
 	
 	private Double value;
 	
@@ -25,11 +25,11 @@ public class Score {
 		id.setUser(user);
 	}
 	
-	public ScorePK getId() {
+	public ScorePK2 getId() {
 		return id;
 	}
 
-	public void setId(ScorePK id) {
+	public void setId(ScorePK2 id) {
 		this.id = id;
 	}
 
