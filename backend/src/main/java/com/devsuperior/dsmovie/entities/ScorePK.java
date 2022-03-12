@@ -7,7 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Embeddable
-public class ScorePK2 implements Serializable{
+public class ScorePK implements Serializable{
 	
 
 
@@ -28,7 +28,7 @@ public class ScorePK2 implements Serializable{
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	public ScorePK2() {
+	public ScorePK() {
 		
 	}
 
